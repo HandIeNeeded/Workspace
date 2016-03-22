@@ -1,7 +1,7 @@
 "for personal dict and complete
 
-set dictionary+=/usr/share/dict/vim/code.dict
-au FileType cc setlocal complete+=k
+set complete+=k{/usr/include/share/dict/vim/code.dict}
+set complete+=i
 
 imap [[ {<cr>}<c-o>O
 syntax on
@@ -12,7 +12,7 @@ set shm=atI
 set wildmenu
 set cuc 
 set cul 
-set shortmess=atI   
+set shortmess+=atI   
 set guifont=Monaco\ 10   
 set showcmd         
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}   
@@ -38,14 +38,13 @@ set viminfo+=!
 set iskeyword+=_,$,@,%,#,-
 map <C-w> <C-w>w
 map <F2> <ESC>ggVG"+y
-map <F3> :call CompileHome()<cr>
+map <F3> :call Compile()<cr>
 map <F4> :!./%< <cr>
-map <F5> :call Compile()<cr>
+map <F5> :call CompileHome()<cr>
 map <F6> :call FormartSrc()<cr><cr>
 map <F7> :g/^\s*$/d<cr> 
 map <F8> :40vs %<.in <cr>
 map <F9> :call Rungdb()<cr>
-filetype indent on
 if version >= 603
 	set helplang=cn
 	set encoding=utf-8
@@ -180,10 +179,12 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 "For yuzhou627
 Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Rip-Rip/clang_complete'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+set completeopt=preview,menu
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -205,9 +206,30 @@ let g:ycm_key_list_select_completion=['<TAB>', 'j', '<Enter>']
 let g:ycm_key_list_previous_completion=['k']
 let g:ycm_confirm_extra_conf=0
 let g:ycm_global_ycm_extra_conf='~/Retired/.ycm_extra_conf.py'
-let g:ycm_disable_for_files_larger_than_kb=10
+let g:ycm_disable_for_files_larger_than_kb=1000
 let g:ycm_enable_diagnostic_highlighting=0
 let g:ycm_complete_in_comments=1
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_min_num_of_chars_for_completion=1
+"let g:ycm_filetype_blacklist={
+"    \ 'cpp': 1,
+"    \ 'cxx': 1,
+"    \ 'c': 1,
+"    \ 'h': 1,
+"    \ 'cc': 1
+"    \}
+"let g:ycm_filetype_specific_completion_to_disable={
+"    \ 'gitcommit': 1,
+"    \ 'cpp': 1,
+"    \ 'cc': 1,
+"    \ 'c': 1,
+"    \ 'cxx': 1,
+"    \ 'h': 1
+"    \}
+
+"clang_complete
+"let g:clang_library_path='~/vim/bundle/YouCompleteMe/third_party/ycmd/libclang.so.3.7'
+"let g:clang_use_library=1
+"let g:clang_auto_select=1
+"let g:clang_complete_copen=1
