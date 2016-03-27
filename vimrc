@@ -6,7 +6,7 @@ set complete+=i
 imap [[ {<cr>}<c-o>O
 syntax on
 color ron
-set ai si cin ci sts=-1 sw=4 ts=4 et nu
+set ai si cin ci sts=4 sw=4 ts=4 et nu
 set matchtime=0
 set shm=atI
 set wildmenu
