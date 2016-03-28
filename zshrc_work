@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="ylei"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -53,7 +53,8 @@ ZSH_THEME="robbyrussell"
 
 # User configuration
 
-  export PATH="/home/ylei/jdk1.7/bin:/usr/local/lib:/usr/local/cuda/bin:.:/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/cuda/bin:/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PS1="\u@\h "
+export PATH="/home/ylei/myBash:/home/ylei/jdk1.7/bin:/usr/local/lib:/usr/local/cuda/bin:.:/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/cuda/bin:/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -82,18 +83,21 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias sc="scons -uj32"
+alias sc="scons -uj16"
 alias cd1="cd .."
 alias cd2="cd ../.."
 alias cd3="cd ../../.."
 alias cd4="cd ../../../.."
 alias cd5="cd ../../../../.."
 alias brazil="/mnt/ficusbrazil/ylei/"
-alias data="/mnt/ficusbrazil/ylei/face/"
-alias exp="/mnt/ficusbrazil/ylei/example/"
-alias vcore="~/ficus/vision/vedett/"
-alias vapp="~/ficus/face/algorithm/vedett_app/"
-alias process="/ficus186a/ylei/ficus/face/module/facial_action/"
+alias denmark="/mnt/ficusdenmark/ylei/"
+alias colombia="/mnt/ficuscolombia/ylei/"
+alias data="/mnt/ficusbrazil/ylei/data/"
+alias exp="/mnt/ficusbrazil/ylei/exps/"
+alias process="/ficus193/ylei/1_ficus/face/misc/"
+alias code="/ficus193/ylei/"
+alias gitg="gitg &"
+alias desk="nautilus . &"
 
 function msh() {
     if [ $# != 2 ]; then
@@ -112,6 +116,10 @@ function msh() {
         ssh ${1}@192.168.2.55 -Y
     elif [ $2 = "france" ]; then
         ssh ${1}@192.168.2.56 -Y
+    elif [ $2 = "alpha" ]; then
+        ssh ${1}@192.168.2.101 -Y
+    elif [ $2 = "beta" ]; then
+        ssh ${1}@192.168.2.102 -Y
     else
         echo "ssh ${1}@192.168.0.${2}"
         ssh ${1}@192.168.0.${2} -Y
@@ -120,10 +128,5 @@ function msh() {
 }
 
 function mkcd() {
-    mkdir -p "$@" && eval cd "\"\$$#\"";
-}
-
-function git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    mkdir -p "$@" && eval cd "\"\$$#\""
 }
