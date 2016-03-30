@@ -98,6 +98,7 @@ alias process="/ficus193/ylei/1_ficus/face/misc/"
 alias code="/ficus193/ylei/"
 alias gitg="gitg &"
 alias desk="nautilus . &"
+alias eog="shotwell"
 
 function msh() {
     if [ $# != 2 ]; then
