@@ -99,6 +99,7 @@ alias code="/ficus193/ylei/"
 alias gitg="gitg &"
 alias desk="nautilus . &"
 alias eog="shotwell"
+alias sw="shotwell"
 
 function msh() {
     if [ $# != 2 ]; then
