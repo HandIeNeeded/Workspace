@@ -106,25 +106,13 @@ function msh() {
         echo "Need exactly 2 parameters!!!"
         return 
     fi
-    if [ $2 = "america" ]; then
-        ssh ${1}@192.168.2.51 -Y
-    elif [ $2 = "brazil" ]; then
-        ssh ${1}@192.168.2.52 -Y
-    elif [ $2 = "colombia" ]; then
-        ssh ${1}@192.168.2.53 -Y
-    elif [ $2 = "denmark" ]; then
-        ssh ${1}@192.168.2.54 -Y
-    elif [ $2 = "england" ]; then
-        ssh ${1}@192.168.2.55 -Y
-    elif [ $2 = "france" ]; then
-        ssh ${1}@192.168.2.56 -Y
-    elif [ $2 = "alpha" ]; then
-        ssh ${1}@192.168.2.101 -Y
-    elif [ $2 = "beta" ]; then
-        ssh ${1}@192.168.2.102 -Y
+    if (( $2 > 50 )) && (( $2 < 60 )); then
+        ssh ${1}@192.168.2.$2 -Y
+    elif (( $2 > 100 )) && (( $2 < 105 )); then
+        ssh ${1}@192.168.2.$2 -Y
     else
-        echo "ssh ${1}@192.168.0.${2}"
-        ssh ${1}@192.168.0.${2} -Y
+        echo "ssh $1@192.168.0.$2"
+        ssh $1@192.168.0.$2 -Y
         return
     fi
 }
