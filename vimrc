@@ -29,7 +29,7 @@ set noswapfile
 "set ignorecase
 set report=0
 set scrolloff=15
-set mouse=a
+"set mouse=a
 set history=1000
 set hlsearch
 set incsearch
