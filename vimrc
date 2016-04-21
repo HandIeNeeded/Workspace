@@ -80,7 +80,7 @@ func SetTitle()
 	if expand("%:e") == 'h'
 		call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H_")
 		call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H_")
-		call append(line(".")+8, "#endif")
+		call append(line(".")+8, "#endif /* ".toupper(expand("%:r"))."_H_ */")
 	endif
 	if &filetype == 'java'
 		call append(line(".")+6,"public class ".expand("%:r"))
