@@ -55,7 +55,7 @@ endif
 autocmd BufNewFile *.cc,*.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()" 
 func SetTitle() 
 	if &filetype == 'sh' 
-		call setline(1,"\#!/bin/bash") 
+		call setline(1,"#!/bin/bash") 
 		call append(line("."), "") 
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
