@@ -3,7 +3,7 @@
 set complete+=k{/usr/include/share/dict/vim/code.dict}
 set complete+=i
 
-imap [[ {<cr>}<c-o>O
+imap [[ <cr>{<cr>}<c-o>O
 syntax on
 color ron
 set ai si cin ci sts=4 sw=4 ts=4 et nu
@@ -12,6 +12,9 @@ set shm=atI
 set wildmenu
 set cuc 
 set cul 
+set t_Co=256
+hi CursorLine cterm=NONE ctermbg=237 ctermfg=NONE
+hi CursorColumn cterm=NONE ctermbg=237 ctermfg=NONE
 set shortmess+=atI   
 set guifont=Monaco\ 10   
 set showcmd         
