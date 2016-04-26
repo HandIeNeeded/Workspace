@@ -205,8 +205,8 @@ set completeopt=preview,menu
 "YCM
 let g:ycm_warning_symbol="*"
 let g:ycm_error_symbol="✗"
-let g:ycm_key_list_select_completion=['<TAB>', 'j', '<Enter>']
-let g:ycm_key_list_previous_completion=['k']
+let g:ycm_key_list_select_completion=['<TAB>', '<Enter>']
+let g:ycm_key_list_previous_completion=[]
 let g:ycm_confirm_extra_conf=0
 let g:ycm_global_ycm_extra_conf='~/Retired/.ycm_extra_conf.py'
 let g:ycm_disable_for_files_larger_than_kb=1000
