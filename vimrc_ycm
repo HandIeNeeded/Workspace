@@ -1,17 +1,23 @@
 "for personal dict and complete
 
-set complete+=k{/usr/include/share/dict/vim/code.dict}
+"set complete+=k{/usr/include/share/dict/vim/code.dict}
 set complete+=i
 
 imap [[ {<cr>}<c-o>O
 syntax on
-color ron
-set ai si cin ci sts=4 sw=4 ts=4 et nu
+"color ron
+colorscheme desert
+set background=dark
+set t_Co=256
+set ai si cin ci sts=2 sw=2 ts=2 et nu
 set matchtime=0
 set shm=atI
+set ff=unix
 set wildmenu
 set cuc 
 set cul 
+hi CursorLine cterm=NONE ctermbg=235 ctermfg=NONE
+hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE
 set shortmess+=atI   
 set guifont=Monaco\ 10   
 set showcmd         
@@ -49,26 +55,28 @@ if version >= 603
 	set helplang=cn
 	set encoding=utf-8
 endif
-autocmd BufNewFile *.cc,*.cpp,*.[ch],*.sh,*.rb,*.java,*.py exec ":call SetTitle()" 
+autocmd BufNewFile *.cc,*.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.hs exec ":call SetTitle()" 
 func SetTitle() 
 	if &filetype == 'sh' 
-		call setline(1,"\#!/bin/bash") 
+		call setline(1,"#!/bin/bash") 
 		call append(line("."), "") 
-    elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=utf-8")
-	    call append(line(".")+1, "") 
-    elseif &filetype == 'ruby'
-        call setline(1,"#!/usr/bin/env ruby")
-        call append(line("."),"# encoding: utf-8")
-	    call append(line(".")+1, "")
-    elseif &filetype == 'mkd'
-        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
+  elseif &filetype == 'python'
+    call setline(1,"#!/usr/bin/env python")
+    call append(line("."),"# coding=utf-8")
+    call append(line(".")+1, "") 
+  elseif &filetype == 'ruby'
+    call setline(1,"#!/usr/bin/env ruby")
+    call append(line("."),"# encoding: utf-8")
+    call append(line(".")+1, "")
+  elseif &filetype == 'mkd'
+    call setline(1,"<head><meta charset=\"UTF-8\"></head>")
+  elseif &filetype == 'haskell'
+    call setline(1,"#!/usr/bin/env runhaskell")
 	else 
 		call setline(1,"/*************************************************************************") 
 		call append(line("."), "	> File Name: ".expand("%")) 
-		call append(line(".")+1, "	> Author: yuzhou627") 
-		call append(line(".")+2, "	> Mail:   yuzhou627@gmail.com") 
+		call append(line(".")+1, "	> Author: Riho.Yoshioka") 
+		call append(line(".")+2, "	> Mail:   riho.yoshioka@yandex.com") 
 		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
 		call append(line(".")+4, "*************************************************************************/") 
 		call append(line(".")+5, "")
@@ -93,20 +101,21 @@ func! CompileHome()
 		exec "!g++ -std=c++11 -g -Wall -DHOME % -o %<"
 	elseif &filetype == 'java' 
 		exec "!javac %" 
-		exec "!tie java %<"
+		exec "!java %<"
 	elseif &filetype == 'sh'
-		:!tie bash %
+		exec "!bash %"
 	elseif &filetype == 'python'
-		exec "!tie python %"
-    elseif &filetype == 'html'
-        exec "!firefox % &"
-    elseif &filetype == 'go'
-        exec "!tie go run %"
-    elseif &filetype == 'mkd'
-        exec "!~/.vim/markdown.pl % > %.html &"
-        exec "!firefox %.html &"
-	endif
+		exec "!python %"
+  elseif &filetype == 'html'
+    exec "!firefox % &"
+  elseif &filetype == 'go'
+    exec "!go run %"
+  elseif &filetype == 'mkd'
+    exec "!~/.vim/markdown.pl % > %.html &"
+    exec "!firefox %.html &"
+  endif
 endfunc
+
 func! Compile()
 	exec "w"
 	if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
@@ -115,18 +124,19 @@ func! Compile()
 		exec "!javac %" 
 		exec "!tie java %<"
 	elseif &filetype == 'sh'
-		:!tie bash %
+		exec "!bash %"
 	elseif &filetype == 'python'
-		exec "!tie python %"
-    elseif &filetype == 'html'
-        exec "!firefox % &"
-    elseif &filetype == 'go'
-        exec "!tie go run %"
-    elseif &filetype == 'mkd'
-        exec "!~/.vim/markdown.pl % > %.html &"
-        exec "!firefox %.html &"
+    exec "!python %"
+  elseif &filetype == 'html'
+    exec "!firefox % &"
+  elseif &filetype == 'go'
+    exec "!go run %"
+  elseif &filetype == 'mkd'
+    exec "!~/.vim/markdown.pl % > %.html &"
+    exec "!firefox %.html &"
 	endif
 endfunc
+
 func! Rungdb()
 	exec "w"
 	exec "!g++ -std=c++11 -g -Wall -DHOME % -o %<"
@@ -202,8 +212,8 @@ set completeopt=preview,menu
 "YCM
 let g:ycm_warning_symbol="*"
 let g:ycm_error_symbol="✗"
-let g:ycm_key_list_select_completion=['<TAB>', 'j', '<Enter>']
-let g:ycm_key_list_previous_completion=['k']
+let g:ycm_key_list_select_completion=['<TAB>', '<Enter>']
+let g:ycm_key_list_previous_completion=[]
 let g:ycm_confirm_extra_conf=0
 let g:ycm_global_ycm_extra_conf='~/Retired/.ycm_extra_conf.py'
 let g:ycm_disable_for_files_larger_than_kb=1000
