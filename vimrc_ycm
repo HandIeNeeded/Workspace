@@ -3,7 +3,7 @@
 "set complete+=k{/usr/include/share/dict/vim/code.dict}
 set complete+=i
 
-imap [[ {<cr>}<c-o>O
+imap [[ <cr>{<cr>}<c-o>O
 syntax on
 "color ron
 colorscheme desert
@@ -16,8 +16,9 @@ set ff=unix
 set wildmenu
 set cuc 
 set cul 
-hi CursorLine cterm=NONE ctermbg=235 ctermfg=NONE
-hi CursorColumn cterm=NONE ctermbg=235 ctermfg=NONE
+set t_Co=256
+hi CursorLine cterm=NONE ctermbg=237 ctermfg=NONE
+hi CursorColumn cterm=NONE ctermbg=237 ctermfg=NONE
 set shortmess+=atI   
 set guifont=Monaco\ 10   
 set showcmd         
