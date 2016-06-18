@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ $# -eq 0 ] ; then
+    find . | head
+elif [ $# -eq 1 ] ; then
+    target_file=$(find . -name "*.$1" | head -n100 | sort -R | head -n1)
+    vim $target_file
+else 
+    echo "too many arguments"
+fi

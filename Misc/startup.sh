@@ -4,7 +4,7 @@
 
 while true; do
   setxkbmap -option caps:ctrl_modifier
-  xset r rate 160 45
+  xset r rate 160 48
   sleep 1h
 done
 
