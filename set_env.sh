@@ -12,7 +12,9 @@ else
 fi
 
 echo "Now update git repo first!!!"
+cd ~/Workspace/
 git pull origin master
+cd ~
 
 echo "Now Install Oh My Zsh!!!"
 
@@ -32,8 +34,8 @@ else
 fi
 
 echo "Now set up environment!!!"
-cd Work
-cp bash_work ~/.bashrc
+cd ~/Workspace/Work
+cp bashrc_work ~/.bashrc
 cp zshrc_work ~/.zshrc
 cp ylei.zsh-theme_work ~/.oh-my-zsh/themes/ylei.zsh-theme
 cp vimrc_work ~/.vimrc
@@ -41,6 +43,8 @@ cp ../Misc/tmux ~/.tmux.conf
 
 source ~/.bashrc
 source ~/.zshrc
+
+cd ~
 
 echo "Basic environment is ready. Install YCM by Vundle if you want!!!"
 echo "Done!!! Enjoy :)"
