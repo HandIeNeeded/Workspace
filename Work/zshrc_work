@@ -86,6 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias web='python -m SimpleHTTPServer'
 alias sc="scons -uj40"
 alias cd1="cd .."
 alias cd2="cd ../.."
