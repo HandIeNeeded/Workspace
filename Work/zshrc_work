@@ -54,7 +54,8 @@ ZSH_THEME="ylei"
 # User configuration
 
 export PS1="\u@\h "
-export PATH="/home/ylei/myBash:/home/ylei/jdk1.7/bin:/usr/local/lib:/usr/local/cuda/bin:.:/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/cuda/bin:/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/home/ylei/jdk1.7/bin:/usr/local/lib:/usr/local/cuda/bin:.:/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/cuda/bin:/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/home/ylei/Scalpel:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 HOSTNAME=$(cat /etc/hostname)

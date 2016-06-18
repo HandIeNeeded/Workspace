@@ -40,6 +40,7 @@ cp zshrc_work ~/.zshrc
 cp ylei.zsh-theme_work ~/.oh-my-zsh/themes/ylei.zsh-theme
 cp vimrc_work ~/.vimrc
 cp ../Misc/tmux ~/.tmux.conf
+cp -r ~/Workspace/Misc/Scalpel ~/
 
 source ~/.bashrc
 source ~/.zshrc

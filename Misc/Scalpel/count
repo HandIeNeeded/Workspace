@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ $# -eq 0 ] ; then
+    echo total file:
+    find . | wc
+elif [ $# -eq 1 ] ; then
+    echo total $1: `find . -name "*.$1" | wc`
+else 
+    echo total $1 in $2: `find $2/ -name "*.$1" | wc`
+fi
