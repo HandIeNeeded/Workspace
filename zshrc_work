@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/ylei/.oh-my-zsh
+export ZSH=/home/ylei/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -55,7 +55,10 @@ ZSH_THEME="ylei"
 
 export PS1="\u@\h "
 export PATH="/home/ylei/myBash:/home/ylei/jdk1.7/bin:/usr/local/lib:/usr/local/cuda/bin:.:/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/cuda/bin:/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
+
+HOSTNAME=$(cat /etc/hostname)
+HOST=$(cat /etc/hostname)
 
 source $ZSH/oh-my-zsh.sh
 
