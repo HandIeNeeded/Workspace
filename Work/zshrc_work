@@ -86,35 +86,36 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias sc="scons -uj16"
+alias sc="scons -uj40"
 alias cd1="cd .."
 alias cd2="cd ../.."
 alias cd3="cd ../../.."
 alias cd4="cd ../../../.."
 alias cd5="cd ../../../../.."
-alias ylei="/mnt/$HOSTNAME/ylei/"
-alias data="/mnt/$HOSTNAME/ylei/data/"
-alias exp="/mnt/$HOSTNAME/ylei/exps/"
+alias ylei="/mnt/$HOST/ylei/"
+alias data="/mnt/$HOST/ylei/data/"
+alias exp="/mnt/$HOST/ylei/exps/"
 alias code="/ficus193/ylei/"
 alias gitg="gitg &"
 alias desk="nautilus . &"
 alias sw="shotwell"
 
 function msh() {
+    user=$1
+    ip=$2
     if [ $# != 2 ]; then
-        echo "Need exactly 2 parameters!!!"
-        return 
+        echo "Use default user ylei!!!"
+        user="ylei"
+        ip=$1
     fi
-    if (( $2 > 50 )) && (( $2 < 60 )); then
-        ssh ${1}@192.168.2.$2 -Y
-    elif (( $2 > 70 )) && (( $2 < 80 )); then
-        ssh ${1}@192.168.2.$2 -Y
-    elif (( $2 > 100 )) && (( $2 < 130 )); then
-        ssh ${1}@192.168.2.$2 -Y
-    elif (( $2 > 200 )) && (( $2 < 205 )); then
-        ssh ${1}@192.168.2.$2 -Y
+    if (( $ip > 50 )) && (( $ip < 80 )); then
+        ssh $user@192.168.2.$ip -Y
+    elif (( $ip > 100 )) && (( $ip < 130 )); then
+        ssh $user@192.168.2.$ip -Y
+    elif (( $ip > 200 )) && (( $ip < 210 )); then
+        ssh $user@192.168.2.$ip -Y
     else
-        ssh $1@192.168.0.$2 -Y
+        ssh $user@192.168.0.$ip -Y
     fi
 }
 
@@ -124,4 +125,10 @@ function setk() {
 
 function mkcd() {
     mkdir -p "$@" && eval cd "\"\$$#\""
+}
+
+function go() {
+    user=$1
+    dir=$2
+    cd /mnt/$HOST/$user/$dir/
 }
