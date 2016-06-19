@@ -1,8 +1,12 @@
 #!/bin/bash
 
 #keyboard
-setxkbmap -option caps:ctrl_modifier
-xset r rate 160 48
+
+while true; do
+  setxkbmap -option caps:ctrl_modifier
+  xset r rate 160 48
+  sleep 1h
+done
 
 #Volume
 #pactl -- set-sink-volume 0 200%
