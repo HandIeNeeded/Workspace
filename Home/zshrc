@@ -52,7 +52,14 @@ ZSH_THEME="ylei"
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH="/home/yuzhou627/Scalpel:$PATH"
+export PATH="/home/yuzhou627/Software/JDK/jdk1.8.0_92:$PATH"
 export CXXFLAGS="-std=c++11 -DHOME -Wall -g"
+
+JAVA_HOME=/usr/local/jdk
+JAVA_BIN=/usr/local/jdk/bin
+PATH=$JAVA_HOME/bin:$PATH
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME JAVA_BIN PATH CLASSPATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,51 +89,51 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 function tie() {
-    #if [ $# != 1 ]; then
-    #    echo "The number of parameters is not right"
-    #    return 0
-    #fi
-    ts=`date +%s%N`
-    $@
-    te=`date +%s%N`
-    awk "BEGIN {printf \"Time used: %.3fms\n\", ($te - $ts) / 1000000000.0}" 
+  #if [ $# != 1 ]; then
+  #    echo "The number of parameters is not right"
+  #    return 0
+  #fi
+  ts=`date +%s%N`
+  $@
+  te=`date +%s%N`
+  awk "BEGIN {printf \"Time used: %.3fms\n\", ($te - $ts) / 1000000000.0}" 
 }
 
 function mkcd() {
-    mkdir -p $1
-    cd $1
+  mkdir -p $1
+  cd $1
 }
 
 function code() {
-    if [ $# = 0 ]; then 
-        cd ~/Retired/Codeforces/
-        return 0
-    elif [ $# != 1 ]; then 
-        echo "The number of parameters is not right!"
-        return 0
-    fi 
-    cd ~; java -jar ~/Contest/TopCoder/Hightail/Hightail-v0.9.4.jar &
-    mkcd ~/Retired/Codeforces/CF$1
+  if [ $# = 0 ]; then 
+    cd ~/Retired/Codeforces/
+    return 0
+  elif [ $# != 1 ]; then 
+    echo "The number of parameters is not right!"
+    return 0
+  fi 
+  cd ~; java -jar ~/Contest/TopCoder/Hightail/Hightail-v0.9.4.jar &
+  mkcd ~/Retired/Codeforces/CF$1
 }
 
 function tc() {
-    cd ~/Contest/TopCoder
+  cd ~/Contest/TopCoder
 }
 
 function check() {
-    touch my.cc
-    touch std.cc
-    touch gen.cc
-    cp ~/Retired/Library/run.sh .
-    chmod 755 run.sh
+  touch my.cc
+  touch std.cc
+  cp ~/Retired/Library/gen.cc .
+  cp ~/Retired/Library/run.sh .
+  chmod 755 run.sh
 }
 
 function run() {
-    bash run.sh
+  bash run.sh
 }
 
 function setk() {
-    bash ~/Workspace/startup.sh &
+  bash ~/Workspace/Misc/startup.sh &
 }
 
 alias vpn="sudo service openvpn restart"
