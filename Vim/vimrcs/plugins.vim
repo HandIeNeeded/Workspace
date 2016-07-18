@@ -8,7 +8,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-"yuzhou627
+"yoshioka
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
