@@ -135,7 +135,7 @@ function msh() {
 }
 
 function setk() {
-  bash ~/Workspace/Misc/startup.sh &
+  bash ~/Workspace/Misc/startup.sh 
 }
 
 function mkcd() {

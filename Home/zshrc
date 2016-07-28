@@ -134,7 +134,7 @@ function run() {
 }
 
 function setk() {
-  bash ~/Workspace/Misc/startup.sh &
+  bash ~/Workspace/Misc/startup.sh
 }
 
 alias vpn="sudo service openvpn restart"
