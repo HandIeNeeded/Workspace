@@ -434,17 +434,65 @@ endsnippet
 
 # vim:ft=snippets:
 
+snippet rep "for 0 n - 1" w
+for (int ${1:i} = 0; $1 < $2; $1++) $3
+endsnippet
+    
+snippet repp "for a b" w
+for (${5:int} ${1:i} = $2; $1 <= $3; $1++) $4
+endsnippet
+
+snippet red "for n - 1 0 --" w
+for (int ${2:i} = $1 - 1; $2 >= 0; $2--) $3
+endsnippet
+
+snippet redd "for a b --" w
+for (${5:int} ${1:i} = $2; $1 >= $3; $1--) $4
+endsnippet
+
 snippet cf "code header" b 
 import java.io.*;
 import java.util.*;
 
 public class Main {
 	public static void main(String[] args) {
-
+    InputStream inputStream = System.in;
+    OutputStream outputStream = System.out;
+    InputReader in = new InputReader(inputStream);
+    PrintWriter out = new PrintWriter(outputStream);
+    
+    Task$1 solver = new Task$1();
+    solver.solve(1, in, out);
+    out.close();
 	}
 
 	static class Task${1:A} {
 		$2
 	}
+
+  static class InputReader {
+    public BufferedReader reader;
+    public StringTokenizer tokenizer;
+
+    public InputReader(InputStream stream) {
+      reader = new BufferedReader(new InputStreamReader(stream), 32768);
+      tokenizer = null;
+    }
+
+    public String next() {
+      while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+        try {
+          tokenizer = new StringTokenizer(reader.readLine());
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
+      return tokenizer.nextToken();
+    }
+
+    public int nextInt() {
+      return Integer.parseInt(next());
+    }
+  }
 }
 endsnippet
