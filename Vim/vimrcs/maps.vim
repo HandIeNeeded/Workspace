@@ -1,6 +1,6 @@
 map <F2> <ESC>ggVG"+y
 map <F3> :call Compile()<cr>
-map <F4> :!./%< <cr>
+map <F4> :call Run()<cr>
 map <F5> :call CompileHome()<cr>
 map <F6> :call FormartSrc()<cr>
 map <F7> :g/^\s*$/d<cr> 

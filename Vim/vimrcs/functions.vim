@@ -1,4 +1,4 @@
-func SetTitle() 
+func! SetTitle() 
   if &filetype == 'sh' 
     call setline(1,"#!/bin/bash") 
     call append(line("."), "") 
@@ -16,9 +16,9 @@ func SetTitle()
     call setline(1,"#!/usr/bin/env runhaskell")
   else 
     call setline(1,          "/*************************************************************************") 
-    call append(line("."),   "  > File Name: ".expand("%")) 
-    call append(line(".")+1, "  > Author: Riho.Yoshioka") 
-    call append(line(".")+2, "  > Mail:   riho.yoshioka@yandex.com") 
+    call append(line("."),   "  >         File: ".expand("%")) 
+    call append(line(".")+1, "  >       Author: Riho.Yoshioka") 
+    call append(line(".")+2, "  >         Mail: riho.yoshioka@yandex.com") 
     call append(line(".")+3, "  > Created Time: ".strftime("%c")) 
     call append(line(".")+4, "*************************************************************************/") 
     call append(line(".")+5, "")
@@ -54,13 +54,31 @@ func! CompileHome()
   endif
 endfunc
 
+func! Run()
+  if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
+    exec "!./%<"
+  elseif &filetype == 'java' 
+    exec "!java %<" 
+  elseif &filetype == 'sh'
+    exec "!bash %"
+  elseif &filetype == 'python'
+    exec "!python %"
+  elseif &filetype == 'html'
+    exec "!firefox % &"
+  elseif &filetype == 'go'
+    exec "!go run %"
+  elseif &filetype == 'mkd'
+    exec "!~/.vim/markdown.pl % > %.html &"
+    exec "!firefox %.html &"
+  endif
+endfunc
+
 func! Compile()
   exec "w"
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
     exec "!g++ -std=c++11 -g -Wall % -o %<"
   elseif &filetype == 'java' 
     exec "!javac %" 
-    exec "!java %<"
   elseif &filetype == 'sh'
     exec "!bash %"
   elseif &filetype == 'python'
@@ -81,7 +99,7 @@ func! Rungdb()
   exec "!gdb ./%<"
 endfunc
 
-func FormartSrc()
+func! FormartSrc()
   exec "w"
   if &filetype == 'c'
     exec "!astyle --style=ansi -a --suffix=none %"
