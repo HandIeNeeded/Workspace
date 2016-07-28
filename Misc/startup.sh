@@ -4,7 +4,10 @@
 
 setxkbmap -option caps:ctrl_modifier
 xset r rate 160 48
-bash ~/Eclipse/eclipse_mars/eclimd &
+
+if [[ $# > 0 ]]; then
+  bash ~/Eclipse/eclipse_mars/eclimd &
+fi
 
 
 #Volume
