@@ -1,0 +1,390 @@
+priority -50
+
+extends c
+
+# We want to overwrite everything in parent ft.
+priority -49
+
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+snippet beginend "$1.begin(), $1.end() (beginend)"
+${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
+endsnippet
+
+snippet cl "class .. (class)"
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/} (${2:arguments});
+	virtual ~${1/(\w+).*/$1/} ();
+
+private:
+	${0:/* data */}
+};
+endsnippet
+
+snippet ns "namespace .. (namespace)"
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
+{
+	${VISUAL}${0}
+}${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
+endsnippet
+
+snippet readfile "read file (readF)"
+std::vector<char> v;
+if (FILE *fp = fopen(${1:"filename"}, "r"))
+{
+	char buf[1024];
+	while(size_t len = fread(buf, 1, sizeof(buf), fp))
+		v.insert(v.end(), buf, buf + len);
+	fclose(fp);
+}
+endsnippet
+
+snippet map "std::map (map)"
+std::map<${1:key}, ${2:value}> map$0;
+endsnippet
+
+snippet vec "std::vector (v)" w
+vector<${2:int}> $1
+endsnippet
+
+snippet tp "template <typename ..> (template)"
+template <typename ${1:_InputIter}>
+endsnippet
+
+snippet cla "An entire .h generator" b
+#ifndef ${2:`!v substitute(vim_snippets#Filename('$1_H','ClassName'),'.*','\U&\E','')`}
+#define $2
+
+class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}
+{
+private:
+	${3}
+
+public:
+	$1();
+	virtual ~$1();
+};
+
+#endif /* $2 */
+endsnippet
+# vim:ft=snippets:
+
+
+
+#***********************************************************************************
+#for algorithm contest
+#***********************************************************************************
+
+
+#misc
+
+snippet mpy "memcpy array" w
+memcpy($1, $2, sizeof($1));$3
+endsnippet
+
+snippet mst "memset array" w
+memset($1, ${2:0}, sizeof($1));$3
+endsnippet
+
+snippet pii "pair int int" w 
+pair<int, int>$1
+endsnippet
+
+snippet pq "priority queue" w 
+priority_queue<${2:int}> $1;
+endsnippet
+
+snippet pqp "priority queue of pair" w 
+priority_queue<$1, vector<$1>, greater<$1>> $2;
+endsnippet
+
+snippet rep "for 0 n - 1" w
+for (int ${1:i} = 0; $1 < $2; $1++) $3
+endsnippet
+    
+snippet repp "for a b" w
+for (${5:int} ${1:i} = $2; $1 <= $3; $1++) $4
+endsnippet
+
+snippet red "for n - 1 0 --" w
+for (int ${2:i} = $1 - 1; $2 >= 0; $2--) $3
+endsnippet
+
+snippet redd "for a b --" w
+for (${5:int} ${1:i} = $2; $1 >= $3; $1--) $4
+endsnippet
+
+snippet ALL "begin(), end()" w
+$1.begin(), $1.end()${2}
+endsnippet
+
+snippet sort "sort(begin, end)" w
+sort($1.begin(), $1.end());
+$2
+endsnippet
+
+snippet uniq "unique and resize" w
+$1.resize(unique($1.begin(), $1.end()) - $1.begin());
+$2
+endsnippet
+
+snippet pcnt "pop_bount" w
+__builtin_popcount($1)$2
+endsnippet
+
+snippet lb "lower_bound" w 
+lower_bound($1.begin(), $1.end(), $2)$3
+endsnippet
+
+snippet ub "upper_bound" w 
+upper_bound($1.begin(), $1.end(), $2)$3
+endsnippet
+
+#code template
+
+snippet cf "codeforces header file" b
+#include <bits/stdc++.h>
+typedef long long LL;
+using namespace std;
+
+int main() {
+  ios::sync_with_stdio(0);
+  $1
+
+
+  return 0;
+}
+endsnippet
+
+snippet gcj "google code jam header file" b
+#include <bits/stdc++.h>
+typedef long long LL;
+using namespace std;
+
+int main() {
+  ios::sync_with_stdio(0);
+  int t, ca = 1;
+  $1
+
+
+  return 0;
+}
+endsnippet
+
+snippet nb "without bits header" b
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <functional>
+#include <utility>
+#include <bitset>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <cstdio>
+
+typedef long long LL;
+using namespace std;
+
+int main() {
+  ios::sync_with_stdio(0);
+  $1
+
+
+  return 0;
+}
+endsnippet
+
+snippet seg "segment define" b
+#define L (x << 1)
+#define R (x << 1 | 1)
+#define MID ((l + r) >> 1)
+#define LC L, l, MID 
+#define RC R, MID + 1, r
+
+endsnippet
+
+snippet mat "matrix define" b
+typedef int Matrix[N][N];
+Matrix ret, tmp, base;
+
+void Mul(Matrix &a,Matrix &b) {
+  for(int i = 0; i < N; i++) for (int j = 0; j < N; j++) tmp[i][j] = $1;
+  for(int i = 0; i < N; i++) for (int j = 0; j < N; j++) {
+    for (int k = 0; k < N; k++) tmp[i][j] = $2;
+  }
+  memcpy(a, tmp, sizeof(a));
+}
+
+void Powd(${3:int} b) {
+  for(int i = 0; i < N; i++) for (int j = 0; j < N; j++) ret[i][j] = $1;
+  for(; b; b >>= 1) {
+    if (b & 1) Mul(ret, base);
+    Mul(base, base);
+  }
+}
+
+endsnippet
+
+snippet ac "automation" b 
+struct Automation{
+  int tr[N][Z], fail[N], val[N], node;
+
+  int Node() {
+    memset(tr[node], 0, sizeof(tr[node]));
+    fail[node] = 0;
+    return node++;
+  }
+
+  void Init() {
+    node = 0;
+    Node();
+  }
+
+  void Insert(char *s, int y) {
+    int pos = 0, x, now = 0;
+    while (s[pos]) {
+      x = s[pos++] - 'a';
+      if (!tr[now][x]) {
+        tr[now][x] = Node();
+      }
+      now = tr[now][x];
+    }
+    val[now] = y;
+  }
+
+  void Build() {
+    int x, y;
+    queue<int> q;
+    REP(i, Z) {
+      x = tr[0][i];
+      if (x) {
+        fail[x] = 0;
+        q.push(x);
+      }
+    }
+
+    while (!q.empty()) {
+      x = q.front(); q.pop();
+      REP(i, Z) {
+        if (!tr[x][i]) {
+          tr[x][i] = tr[fail[x]][i];
+          continue;
+        }
+        y = tr[x][i];
+        q.push(y);
+        fail[y] = tr[fail[x]][i];
+        val[y] += val[fail[y]];
+      }
+    }
+  }
+}AC;
+
+$1
+endsnippet
+
+snippet add "add module" w
+void Add(int &x, int y) {
+  x += y;
+  if (x >= MO) x -= MO;
+}
+$2
+endsnippet
+
+snippet powd "power module" w
+${1:int} Powd(${1:int} x, ${1:int} y) {
+  ${1:int} ans = 1;
+  for (; y; y >>= 1) {
+    if (y & 1) ans = 1LL * ans * x % MO;
+    x = 1LL * x * x % MO;
+  }
+  return ans;
+}
+$2
+endsnippet
+
+snippet clk "cerr time" w 
+cerr << "---------------------------" << endl;
+cerr << "Time used: " << setprecision(6) << 1.0 * clock() / CLOCKS_PER_SEC << " sec." << endl;
+$1
+endsnippet
+
+snippet dinic "max flow" b 
+template<int N, int M, typename Type>
+struct MaxFlow{
+  int edge, source, sink;
+  int level[N], current[N];
+  int first[N], next[M << 1], end[M << 1];
+  Type cap[M << 1];
+  const Type INF = ;
+
+  void Init(int S, int T) {
+    source = S, sink = T;
+    edge = 1, memset(first, 0, sizeof(first));
+  }
+
+  void add(int x, int y, Type z) {
+    next[++edge] = first[x]; first[x] = edge; end[edge] = y; cap[edge] = z;
+  }
+
+  void Add(int x, int y, Type z) {
+    add(x, y, z);
+    add(y, x, 0);
+  }
+
+  bool Bfs() {
+    queue<int> q;
+    memset(level, 0, sizeof(level));
+    q.push(source), level[source] = 1;
+    while(q.size()) {
+      int x = q.front(); q.pop();
+      for (int go = first[x]; go; go = next[go]) if (cap[go] > 0 && !level[end[go]]) {
+        int y = end[go];
+        level[y] = level[x] + 1;
+        q.push(y);
+      }
+    }
+    return level[sink];
+  }
+
+  Type Dfs(Type x, Type flow) {
+    if (x == sink || flow == 0) {
+      return flow;
+    }
+    Type ans = 0, tmp = 0;
+    for (int &go = current[x]; go; go = next[go]) if (cap[go] > 0) {
+      int y = end[go];
+      if (level[y] == level[x] + 1 && (tmp = Dfs(y, min(flow, (Type) cap[go]))) > 0) {
+        ans += tmp, flow -= tmp;
+        cap[go] -= tmp, cap[go ^ 1] += tmp;
+        if (flow == 0) {
+          return ans;
+        }
+      }
+    }
+    return ans;
+  }
+
+  Type Dinic() {
+    Type ans = 0;
+    while (Bfs()) {
+      memcpy(current, first, sizeof(first));
+      ans += Dfs(source, INF);
+    }	
+    return ans;
+  }
+};
+MaxFlow<10000, 10000, int> flow;
+$1
+endsnippet
