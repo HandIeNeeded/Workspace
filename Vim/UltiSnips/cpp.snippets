@@ -33,8 +33,7 @@ endsnippet
 
 snippet readfile "read file (readF)"
 std::vector<char> v;
-if (FILE *fp = fopen(${1:"filename"}, "r"))
-{
+if (FILE *fp = fopen(${1:"filename"}, "r")) {
 	char buf[1024];
 	while(size_t len = fread(buf, 1, sizeof(buf), fp))
 		v.insert(v.end(), buf, buf + len);
@@ -117,18 +116,18 @@ snippet pqp "priority queue of pair" w
 priority_queue<$1, vector<$1>, greater<$1>> $2;
 endsnippet
 
-snippet ALL "begin(), end()" w
+snippet all "begin(), end()" w
 $1.begin(), $1.end()${2}
 endsnippet
 
 snippet sort "sort(begin, end)" w
-sort($1.begin(), $1.end());
-$2
+sort(${1:numbers}.begin(), $1.end());
+
 endsnippet
 
 snippet uniq "unique and resize" w
-$1.resize(unique($1.begin(), $1.end()) - $1.begin());
-$2
+${1:numbers}.resize(unique($1.begin(), $1.end()) - $1.begin());
+
 endsnippet
 
 snippet pcnt "pop_bount" w
@@ -136,11 +135,11 @@ __builtin_popcount($1)$2
 endsnippet
 
 snippet lb "lower_bound" w 
-lower_bound($1.begin(), $1.end(), $2)$3
+lower_bound($1.begin(), $1.end(), $2)
 endsnippet
 
 snippet ub "upper_bound" w 
-upper_bound($1.begin(), $1.end(), $2)$3
+upper_bound($1.begin(), $1.end(), $2)
 endsnippet
 
 #code template
@@ -175,24 +174,24 @@ int main() {
 endsnippet
 
 snippet nb "without bits header" b
-#include <iostream>
+#include <vector>
+#include <cstdio>
+#include <bitset>
+#include <utility>
+#include <cstdlib>
 #include <sstream>
 #include <fstream>
-#include <string>
-#include <vector>
-#include <deque>
-#include <queue>
-#include <stack>
 #include <set>
 #include <map>
+#include <deque>
+#include <cmath>
+#include <ctime>
+#include <queue>
+#include <stack>
+#include <string>
+#include <iostream>
 #include <algorithm>
 #include <functional>
-#include <utility>
-#include <bitset>
-#include <cmath>
-#include <cstdlib>
-#include <ctime>
-#include <cstdio>
 
 typedef long long LL;
 using namespace std;
@@ -219,7 +218,7 @@ snippet mat "matrix define" b
 typedef int Matrix[N][N];
 Matrix ret, tmp, base;
 
-void Mul(Matrix &a,Matrix &b) {
+void Mul(Matrix &a, Matrix &b) {
   for(int i = 0; i < N; i++) for (int j = 0; j < N; j++) tmp[i][j] = $1;
   for(int i = 0; i < N; i++) for (int j = 0; j < N; j++) {
     for (int k = 0; k < N; k++) tmp[i][j] = $2;
@@ -299,8 +298,50 @@ void Add(int &x, int y) {
   x += y;
   if (x >= MO) x -= MO;
 }
-$2
+
 endsnippet
+
+snippet prime "get prime" w 
+int visited[N], p[N], tot;
+
+void Prime() {
+  for (int i = 2; i < N; i++) {
+    if (!visited[i]) p[tot++] = i;
+    for (int j = 0; j < tot && i * p[j] < N; j++) {
+      visited[i * p[j]] = p[j];
+      if (i % p[j] == 0) break;
+    }
+  }
+}
+
+endsnippet
+
+snippet gauss "gauss elimination" w 
+int Gauss(int n) {
+  int rank = 0;
+  for (int i = 0; i < K; i++) {
+    bool find = 0;
+    for (int j = rank; j < n; j++) {
+      if (${1:a}[j] & (1LL << i)) {
+        find = 1;
+        swap($1[rank], $1[j]);
+        break;
+      }
+    }
+    if (find) {
+      for (int j = 0; j < n; j++) if (j != rank) {
+        if ($1[j] & (1LL << i)) {
+          $1[j] ^= $1[rank];
+        }
+      }
+      rank++
+    }
+  }
+  return rank;
+}
+
+endsnippet
+
 
 snippet powd "power module" w
 ${1:int} Powd(${1:int} x, ${1:int} y) {
@@ -311,10 +352,9 @@ ${1:int} Powd(${1:int} x, ${1:int} y) {
   }
   return ans;
 }
-$2
 endsnippet
 
-snippet clk "cerr time" w 
+snippet time "cerr time" w 
 cerr << "---------------------------" << endl;
 cerr << "Time used: " << setprecision(6) << 1.0 * clock() / CLOCKS_PER_SEC << " sec." << endl;
 $1
@@ -387,6 +427,59 @@ struct MaxFlow{
 };
 MaxFlow<10000, 10000, int> flow;
 $1
+endsnippet
+
+snippet pt "palindrome tree" b 
+struct PT{
+  struct Node{
+    Node *ch[C], *suffix;
+    int len;
+  }bar[N], *foo, *last, *odd, *even;
+  char s[N];
+  int n, cnt;//cnt = foo - bar = count of palindromes, n the number of char added
+
+  void init() {
+    odd = bar, even = last = odd + 1, foo = even + 1;
+    MST(odd->ch, 0), MST(even->ch, 0);
+    odd->suffix = even->suffix = odd;
+    odd->len = -1, even->len = 0;
+    n = 0, cnt = 2;//root
+  }
+
+  Node* New_Node(int x) {
+    MST(foo->ch, 0), foo->len = x;
+    return foo++;
+  }
+
+  int index(char c) {
+    return c - 'a';
+  }
+
+  Node* get(Node *p) {
+    while (n - p->len - 2 < 0 || s[n - p->len - 2] != s[n - 1]) p = p->suffix;
+    return p;
+  }
+
+  bool add(char c) {
+    int x = index(c); s[n++] = c;
+    Node *p = get(last);
+    if (!p->ch[x]) {
+      last = New_Node(p->len + 2);
+      if (last->len == 1) {
+        last->suffix = even;
+      }
+      else last->suffix = get(p->suffix)->ch[x];//guarantee proper suffix
+      p->ch[x] = last;
+      cnt++;
+      return 1;
+    }
+    else {
+      last = p->ch[x];
+      return 0;
+    }
+  }
+};
+
 endsnippet
 
 snippet setp "cout setprecision" w 
