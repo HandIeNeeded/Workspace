@@ -388,3 +388,12 @@ struct MaxFlow{
 MaxFlow<10000, 10000, int> flow;
 $1
 endsnippet
+
+snippet setp "cout setprecision" w 
+cout << fixed << setprecision(${1:10}) << ${2:ans} << endl;
+endsnippet
+
+snippet edge "read edges" w 
+${3:edges}[${1:x}].push_back(${2:y});
+$3[$2].push_back($1);
+endsnippet
