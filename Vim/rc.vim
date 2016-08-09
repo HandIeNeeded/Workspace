@@ -1,4 +1,4 @@
-source /home/$USER/Workspace/Vim/vimrcs/plugins.vim
-source /home/$USER/Workspace/Vim/vimrcs/maps.vim
-source /home/$USER/Workspace/Vim/vimrcs/functions.vim
-source /home/$USER/Workspace/Vim/vimrcs/misc.vim
+source ~/Workspace/Vim/vimrcs/plugins.vim
+source ~/Workspace/Vim/vimrcs/maps.vim
+source ~/Workspace/Vim/vimrcs/functions.vim
+source ~/Workspace/Vim/vimrcs/misc.vim
