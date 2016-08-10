@@ -361,13 +361,13 @@ $1
 endsnippet
 
 snippet dinic "max flow" b 
-template<int N, int M, typename Type>
+template<int NODE, int EDGE, typename Type>
 struct MaxFlow{
   int edge, source, sink;
-  int level[N], current[N];
-  int first[N], next[M << 1], end[M << 1];
-  Type cap[M << 1];
-  const Type INF = ;
+  int level[NODE], current[NODE];
+  int first[NODE], next[EDGE << 1], to[EDGE << 1];
+  Type cap[EDGE << 1];
+  const Type INF = ${2:1e9};
 
   void Init(int S, int T) {
     source = S, sink = T;
@@ -375,7 +375,7 @@ struct MaxFlow{
   }
 
   void add(int x, int y, Type z) {
-    next[++edge] = first[x]; first[x] = edge; end[edge] = y; cap[edge] = z;
+    next[++edge] = first[x]; first[x] = edge; to[edge] = y; cap[edge] = z;
   }
 
   void Add(int x, int y, Type z) {
@@ -389,8 +389,8 @@ struct MaxFlow{
     q.push(source), level[source] = 1;
     while(q.size()) {
       int x = q.front(); q.pop();
-      for (int go = first[x]; go; go = next[go]) if (cap[go] > 0 && !level[end[go]]) {
-        int y = end[go];
+      for (int go = first[x]; go; go = next[go]) if (cap[go] > 0 && !level[to[go]]) {
+        int y = to[go];
         level[y] = level[x] + 1;
         q.push(y);
       }
@@ -398,14 +398,14 @@ struct MaxFlow{
     return level[sink];
   }
 
-  Type Dfs(Type x, Type flow) {
+  Type Dfs(int x, Type flow) {
     if (x == sink || flow == 0) {
       return flow;
     }
     Type ans = 0, tmp = 0;
     for (int &go = current[x]; go; go = next[go]) if (cap[go] > 0) {
-      int y = end[go];
-      if (level[y] == level[x] + 1 && (tmp = Dfs(y, min(flow, (Type) cap[go]))) > 0) {
+      int y = to[go];
+      if (level[y] == level[x] + 1 && (tmp = Dfs(y, min(flow, cap[go]))) > 0) {
         ans += tmp, flow -= tmp;
         cap[go] -= tmp, cap[go ^ 1] += tmp;
         if (flow == 0) {
@@ -425,8 +425,8 @@ struct MaxFlow{
     return ans;
   }
 };
-MaxFlow<10000, 10000, int> flow;
-$1
+MaxFlow<${3:100000}, ${4:100000}, ${1:int}> flow;
+
 endsnippet
 
 snippet pt "palindrome tree" b 
@@ -489,4 +489,98 @@ endsnippet
 snippet edge "read edges" w 
 ${3:edges}[${1:x}].push_back(${2:y});
 $3[$2].push_back($1);
+endsnippet
+
+snippet fre "freopen file" w 
+#ifdef HOME
+freopen("${1:data}.in", "r", stdin);
+freopen("$1.out", "w", stdout);
+#endif
+endsnippet
+
+snippet lrflow "Dinic LR" w 
+
+template<int N, int E, typename Type, Type INF>
+class MaxFlow {
+public:
+  int edge, node, bridge, src, dst, source, sink;
+  int level[N], current[N];
+  int first[N], next[E << 1], to[E << 1];
+  Type cap[E << 1], hasTo;
+
+  int Node() { return node++; }
+
+  void Init() {
+    node = 4, edge = 1;
+    hasTo = src = 0, dst = 1, source = 2, sink = 3;
+    memset(first, 0, sizeof(first));
+    bridge = Add(sink, source, INF);
+  }
+
+  int add(int x, int y, Type z) {
+    next[++edge] = first[x]; first[x] = edge; 
+    to[edge] = y; cap[edge] = z;
+    return edge;
+  }
+
+  int Add(int x, int y, Type z) {
+    add(y, x, 0);
+    return add(x, y, z);
+  }
+
+  void LRAdd(int x, int y, Type L, Type R) {
+    if (L == 0) Add(x, y, R);
+    else {
+      hasTo += L;
+      Add(src, y, L);
+      Add(x, dst, L);
+      Add(x, y, R - L);
+    }
+  }
+
+  Type Dinic() {
+    while (Bfs(src, dst)) Dfs(src, dst, INF);
+    if (hasTo != GetFlow(src)) return -1;
+
+    while (Bfs(source, sink)) Dfs(source, sink, INF);
+    return GetFlow(source);
+  }
+
+private:
+  Type GetFlow(int x) {
+    Type ans = 0;
+    for (int go = first[x]; go; go = next[go]) if ((go ^ 1) != bridge) ans += cap[go ^ 1];
+    return ans;
+  }
+
+  bool Bfs(int source, int sink) {
+    queue<int> q;
+    fill(level, level + node, 0);
+    q.push(source), level[source] = 1;
+    while(q.size()) {
+      int x = q.front(); q.pop();
+      for (int go = current[x] = first[x]; go; go = next[go]) if (cap[go] > 0 && !level[to[go]]) {
+        int y = to[go];
+        level[y] = level[x] + 1;
+        q.push(y);
+      }
+    }
+    return level[sink];
+  }
+
+  Type Dfs(int x, int sink, Type flow) {
+    if (x == sink || flow == 0) return flow;
+    Type ans = 0, tmp;
+    for (int &go = current[x]; go; go = next[go]) if (cap[go] > 0) {
+      int y = to[go];
+      if (level[y] == level[x] + 1 && (tmp = Dfs(y, sink, min(flow, cap[go]))) > 0) {
+        ans += tmp, flow -= tmp;
+        cap[go] -= tmp, cap[go ^ 1] += tmp;
+        if (flow == 0) break;
+      }
+    }
+    return ans;
+  }
+};
+MaxFlow<${1:N}, ${2:N}, ${3:int}, ${4:1 << 30}> net;
 endsnippet
