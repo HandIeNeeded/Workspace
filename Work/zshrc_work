@@ -62,9 +62,12 @@ export JAVA_HOME JAVA_BIN PATH CLASSPATH
 export TERM=xterm-256color
 HOSTNAME=$(cat /etc/hostname)
 HOST=$(cat /etc/hostname)
-
 source $ZSH/oh-my-zsh.sh
 
+#start with tmux
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -103,17 +106,6 @@ alias code="/ficus193/$USER/"
 alias gitg="gitg &"
 alias desk="nautilus . &"
 alias sw="shotwell"
-
-function tie() {
-  #if [ $# != 1 ]; then
-  #    echo "The number of parameters is not right"
-  #    return 0
-  #fi
-  ts=`date +%s%N`
-  $@
-  te=`date +%s%N`
-  awk "BEGIN {printf \"Time used: %.3f sec.\n\", ($te - $ts) / 1000000000.0}" 
-}
 
 function msh() {
     user=$1
