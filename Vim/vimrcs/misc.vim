@@ -14,7 +14,7 @@ set wildmenu
 set shortmess+=atI   
 set guifont=Monaco\ 10   
 set report=0
-set scrolloff=15
+set scrolloff=5
 set history=1000
 set cmdheight=1
 set viminfo+=!
