@@ -1,0 +1,48 @@
+./mako.snippets:snippet for "for" b
+./ada.snippets:snippet fora "for all"
+./ada.snippets:snippet fors "for some"
+./ada.snippets:snippet for "for"
+./ada.snippets:snippet fore "for each"
+./tcl.snippets:snippet for "for... (for)" b
+./tcl.snippets:snippet foreach "foreach... (foreach)"
+./jinja2.snippets:# snippet for "for" b
+./jinja2.snippets:snippet for "for" b
+./jinja2.snippets:snippet for "for/else" b
+./rails.snippets:snippet format "format (respond_with)"
+./php-symfony2.snippets:snippet form "Symfony2 form type" b
+./rust.snippets:snippet for "for .. in .." b
+./coffee.snippets:snippet fora "Array Comprehension" b
+./coffee.snippets:snippet foro "Object Comprehension" b
+./coffee.snippets:snippet forr "Range Comprehension (inclusive)" b
+./coffee.snippets:snippet forrex "Range Comprehension (exclusive)" b
+./django.snippets:snippet form "Form" b
+./supercollider.snippets:snippet for
+./d.snippets:snippet for "for (for)" b
+./d.snippets:snippet forever "forever (forever)" b
+./d.snippets:snippet fore "foreach (fore)"
+./d.snippets:snippet forif "foreach if (forif)" b
+./eelixir.snippets:snippet for
+./htmldjango.snippets:snippet for "" bi
+./sh.snippets:snippet for "for ... done (for)"
+./sh.snippets:snippet forin "for ... in ... done (forin)"
+./python.snippets:snippet for "for loop" b
+./html.snippets:snippet form "XHTML <form>" w
+./cs.snippets:snippet for "for loop" b
+./cs.snippets:snippet forr "for loop (reverse)" b
+./cs.snippets:snippet foreach "foreach loop" b
+./objc.snippets:snippet forarray "for NSArray loop (forarray)"
+./objc.snippets:snippet format "NSString stringWithFormat (format)"
+./ocaml.snippets:snippet for "for"
+./java.snippets:snippet fore "for (each)" b
+./java.snippets:snippet fori "for" b
+./java.snippets:snippet for "for" b
+./lua.snippets:snippet forp "pair for loop" b
+./lua.snippets:snippet fori "ipair for foop" b
+./lua.snippets:snippet for "numeric for loop" b
+./soy.snippets:snippet fore "foreach command" b
+./soy.snippets:snippet for "for command" b
+./r.snippets:snippet for "for loop"
+./javascript.snippets:snippet for "for (...) {...} (counting up)" b
+./javascript.snippets:snippet ford "for (...) {...} (counting down, faster)" b
+./perl.snippets:snippet for "for"
+./perl.snippets:snippet fore "foreach"

@@ -80,16 +80,16 @@ endsnippet
 
 #misc
 
-snippet rep "for 0 n - 1" w
+snippet for "for 0 n - 1" w
 for (int ${1:i} = 0; $1 < $2; $1++) $3
 endsnippet
     
-snippet repp "for a b" w
+snippet forr "for a b" w
 for (${5:int} ${1:i} = $2; $1 <= $3; $1++) $4
 endsnippet
 
 snippet red "for n - 1 0 --" w
-for (int ${2:i} = $1 - 1; $2 >= 0; $2--) $3
+for (int ${1:i} = $2 - 1; $1 >= 0; $1--) $3
 endsnippet
 
 snippet redd "for a b --" w
@@ -117,12 +117,11 @@ std::priority_queue<$1, std::vector<$1>, std::greater<$1>> $2;
 endsnippet
 
 snippet all "begin(), end()" w
-$1.begin(), $1.end()${2}
+${1:numbers}.begin(), $1.end()
 endsnippet
 
 snippet sort "sort(begin, end)" w
 std::sort(${1:numbers}.begin(), $1.end());
-
 endsnippet
 
 snippet uniq "unique and resize" w
@@ -160,7 +159,7 @@ snippet gcj "google code jam header file" b
 
 int main() {
   std::ios::sync_with_stdio(0);
-  int t, ca = 1;
+  int t, cas = 1;
   $1
 
 
@@ -347,8 +346,8 @@ ${1:int} Powd(${1:int} x, ${1:int} y) {
 endsnippet
 
 snippet time "cerr time" w 
-std::cerr << "---------------------------" << endl;
-std::cerr << "Time used: " << std::setprecision(6) << 1.0 * clock() / CLOCKS_PER_SEC << " sec." << endl;
+std::cerr << "---------------------------" << std::endl;
+std::cerr << "Time used: " << 1.0 * clock() / CLOCKS_PER_SEC << " sec." << std::endl;
 $1
 endsnippet
 
@@ -474,7 +473,7 @@ struct PT{
 endsnippet
 
 snippet setp "cout setprecision" w 
-cout << fixed << setprecision(${1:10}) << ${2:ans} << endl;
+std::cout << fixed << std::setprecision(${1:10}) << ${2:ans} << std::endl;
 endsnippet
 
 snippet edge "read edges" w 
@@ -588,4 +587,20 @@ void MergeSort(T first, T last) {
   }
 }
 
+endsnippet
+
+snippet pca "print case" w 
+printf("Case #%d:", cas++);
+endsnippet
+
+snippet ca "print case" w 
+std::cout << "Case #" << cas++ << ":";
+endsnippet
+
+snippet ll "using LL" w 
+using LL = long long;
+endsnippet
+
+snippet std "using std" w 
+using namespace std;
 endsnippet

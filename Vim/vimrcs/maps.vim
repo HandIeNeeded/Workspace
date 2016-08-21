@@ -8,3 +8,4 @@ map <F8> :40vs %<.in <cr>
 map <F9> :call Rungdb()<cr>
 
 imap [[ {<cr>}<c-o>O
+imap ]] {<cr>});<c-o>O
