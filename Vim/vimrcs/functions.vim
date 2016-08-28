@@ -17,7 +17,7 @@ func! SetTitle()
   else 
     call setline(1,          "/*************************************************************************") 
     call append(line("."),   "  >         File: ".expand("%")) 
-    call append(line(".")+1, "  >       Author: Riho.Yoshioka") 
+    call append(line(".")+1, "  >       Author: lyyllyyl") 
     call append(line(".")+2, "  >         Mail: riho.yoshioka@yandex.com") 
     call append(line(".")+3, "  > Created Time: ".strftime("%c")) 
     call append(line(".")+4, "*************************************************************************/") 
