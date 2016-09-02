@@ -76,7 +76,7 @@ endfunc
 func! Compile()
   exec "w"
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
-    exec "!g++ -std=c++11 -g -Wall % -o %<"
+    exec "!g++ -std=c++14 -g -Wall % -o %<"
   elseif &filetype == 'java' 
     exec "!javac %" 
   elseif &filetype == 'sh'
@@ -95,7 +95,7 @@ endfunc
 
 func! Rungdb()
   exec "w"
-  exec "!g++ -std=c++11 -g -Wall -DHOME % -o %<"
+  exec "!g++ -std=c++14 -g -Wall -DHOME % -o %<"
   exec "!gdb ./%<"
 endfunc
 
