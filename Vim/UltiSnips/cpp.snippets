@@ -81,19 +81,19 @@ endsnippet
 #misc
 
 snippet for "for 0 n - 1" w
-for (int ${1:i} = 0; $1 < $2; $1++) $3
+for (int ${1:i} = 0; $1 < $2; ++$1) $3
 endsnippet
     
 snippet forr "for a b" w
-for (${5:int} ${1:i} = $2; $1 <= $3; $1++) $4
+for (${5:int} ${1:i} = $2; $1 <= $3; ++$1) $4
 endsnippet
 
 snippet red "for n - 1 0 --" w
-for (int ${1:i} = $2 - 1; $1 >= 0; $1--) $3
+for (int ${1:i} = $2 - 1; $1 >= 0; --$1) $3
 endsnippet
 
 snippet redd "for a b --" w
-for (${5:int} ${1:i} = $2; $1 >= $3; $1--) $4
+for (${5:int} ${1:i} = $2; $1 >= $3; --$1) $4
 endsnippet
 
 snippet mpy "memcpy array" w
@@ -210,15 +210,15 @@ typedef int Matrix[N][N];
 Matrix ret, tmp, base;
 
 void Mul(Matrix &a, Matrix &b) {
-  for(int i = 0; i < N; i++) for (int j = 0; j < N; j++) tmp[i][j] = $1;
-  for(int i = 0; i < N; i++) for (int j = 0; j < N; j++) {
-    for (int k = 0; k < N; k++) tmp[i][j] = $2;
+  for(int i = 0; i < N; ++i) for (int j = 0; j < N; ++j) tmp[i][j] = $1;
+  for(int i = 0; i < N; ++i) for (int j = 0; j < N; ++j) {
+    for (int k = 0; k < N; ++k) tmp[i][j] = $2;
   }
   memcpy(a, tmp, sizeof(a));
 }
 
 void Powd(${3:int} b) {
-  for(int i = 0; i < N; i++) for (int j = 0; j < N; j++) ret[i][j] = $1;
+  for(int i = 0; i < N; ++i) for (int j = 0; j < N; ++j) ret[i][j] = $1;
   for(; b; b >>= 1) {
     if (b & 1) Mul(ret, base);
     Mul(base, base);
@@ -296,9 +296,9 @@ snippet prime "get prime" w
 int visited[N], p[N], tot;
 
 void Prime() {
-  for (int i = 2; i < N; i++) {
+  for (int i = 2; i < N; ++i) {
     if (!visited[i]) p[tot++] = i;
-    for (int j = 0; j < tot && i * p[j] < N; j++) {
+    for (int j = 0; j < tot && i * p[j] < N; ++j) {
       visited[i * p[j]] = p[j];
       if (i % p[j] == 0) break;
     }
@@ -310,9 +310,9 @@ endsnippet
 snippet gauss "gauss elimination" w 
 int Gauss(int n) {
   int rank = 0;
-  for (int i = 0; i < K; i++) {
+  for (int i = 0; i < K; ++i) {
     bool find = 0;
-    for (int j = rank; j < n; j++) {
+    for (int j = rank; j < n; ++j) {
       if (${1:a}[j] & (1LL << i)) {
         find = 1;
         swap($1[rank], $1[j]);
@@ -320,12 +320,12 @@ int Gauss(int n) {
       }
     }
     if (find) {
-      for (int j = 0; j < n; j++) if (j != rank) {
+      for (int j = 0; j < n; ++j) if (j != rank) {
         if ($1[j] & (1LL << i)) {
           $1[j] ^= $1[rank];
         }
       }
-      rank++
+      rank++;
     }
   }
   return rank;
@@ -429,7 +429,7 @@ struct PT{
   void Init() {
     odd = bar, even = last = odd + 1, foo = even + 1;
     std::fill(odd->ch, odd->ch + C, 0);
-    std::fill(even>ch, even>ch + C, 0);
+    std::fill(even->ch, even->ch + C, 0);
     odd->suffix = even->suffix = odd;
     odd->len = -1, even->len = 0;
     n = 0, cnt = 2;//root
@@ -589,12 +589,16 @@ void MergeSort(T first, T last) {
 
 endsnippet
 
+snippet print "print variable" w
+std::cerr << "# ${1:x} # is " << $1 << std::endl;
+endsnippet
+
 snippet pca "print case" w 
-printf("Case #%d:", cas++);
+printf("Case #%d:", ++cas);
 endsnippet
 
 snippet ca "print case" w 
-std::cout << "Case #" << cas++ << ":";
+std::cout << "Case #" << ++cas << ":";
 endsnippet
 
 snippet ll "using LL" w 
@@ -620,7 +624,7 @@ void in(T& x) {
 template<class T>
 void out(T x) {
   if (x < 0) putchar('-'), x *= -1;
-  static int length = 0, bit[20];
+  int length = 0, bit[20];
   for (; x > 0; x /= 10) bit[length++] = x % 10;
   if (!length) bit[length++] = 0;
   while (length--) putchar(bit[length] + '0');
