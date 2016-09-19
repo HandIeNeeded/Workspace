@@ -3,8 +3,9 @@ set nocompatible
 set cuc cul
 set hlsearch incsearch
 set autoread autowrite
+set backspace=indent,eol,start
 set ai si cin ci sts=2 sw=2 ts=2 et nu nobk noswf
-colorscheme desert
+colorscheme peachpuff
 set t_Co=256
 set completeopt=preview,menu
 set matchtime=0
