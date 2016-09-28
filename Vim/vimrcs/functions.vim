@@ -37,7 +37,7 @@ endfunc
 func! CompileHome()
   exec "w"
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
-    exec "!g++ -std=c++11 -g -Wall -DHOME % -o %<"
+    exec "!g++ -std=c++14 -g -Wall -DHOME % -o %<"
   elseif &filetype == 'java' 
     exec "!javac %" 
   elseif &filetype == 'sh'
@@ -121,5 +121,4 @@ func! FormartSrc()
   endif
   exec "e! %"
 endfunc
-
 
