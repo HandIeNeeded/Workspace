@@ -3,7 +3,10 @@
 #keyboard
 
 setxkbmap -option caps:ctrl_modifier
-xset r rate 160 48
+
+#first number delay time micro second
+#second number key repeat
+xset r rate 140 35
 
 if [[ $# > 0 ]]; then
   bash ~/Eclipse/eclipse_mars/eclimd &
