@@ -50,12 +50,12 @@ ZSH_THEME="ylei"
 # User configuration
 
 export PS1="\u@\h "
-export PATH="/home/$USER/jdk1.7/bin:/usr/local/lib:/usr/local/cuda/bin:/bin:/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/cuda/bin:/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PATH="/home/$USER/Scalpel:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
-JAVA_HOME=/usr/local/jdk
-JAVA_BIN=/usr/local/jdk/bin
+JAVA_HOME=/home/yuanlei/indeed/softwares/jdk-latest
+JAVA_BIN=/home/yuanlei/indeed/softwares/jdk-latest/bin
 PATH=$JAVA_HOME/bin:$PATH
 CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export JAVA_HOME JAVA_BIN PATH CLASSPATH
@@ -98,11 +98,6 @@ alias cd2="cd ../.."
 alias cd3="cd ../../.."
 alias cd4="cd ../../../.."
 alias cd5="cd ../../../../.."
-alias sc="scons -uj40"
-alias ylei="/mnt/$HOST/$USER/"
-alias data="/mnt/$HOST/$USER/data/"
-alias exp="/mnt/$HOST/$USER/exps/"
-alias code="/ficus193/$USER/"
 alias gitg="gitg &"
 alias desk="nautilus . &"
 alias sw="shotwell"
@@ -137,7 +132,7 @@ function mkcd() {
 function go() {
     user=$1
     dir=$2
-    cd /mnt/$HOST/$user/$dir/
+    cd /$HOST/$user/$dir/
 }
 
 # indeed magic
@@ -148,3 +143,24 @@ if [ -e "$HOME/env/etc/indeedrc" ]; then
 fi
 
 export INDEED_OFFICE=nrtoff
+export INDEED_TEAMS=acme
+
+export PATH=$PATH:$INDEED_PROJECT_DIR/ops-scripts/scripts/lucy
+export PATH=$PATH:/home/yuanlei/env/bin
+export PATH=$INDEED_PROJECT_DIR/hobo/bin:$PATH
+
+
+#auto update repos
+repos_to_update="~/env:${INDEED_PROJECT_DIR}/javadev:~/indeed/hobo"
+OLDIFS=$IFS
+IFS=":"
+for repo in $repos_to_update; do
+  if [[ -d ${repo} ]]; then
+    ~/env/bin/repo-current-async-check "${repo}"
+  fi
+done
+IFS=$OLDIFS
+
+#add some scripts to PATH
+export PATH=$PATH:/home/yuanlei/indeed/misc_scripts
+
