@@ -8,7 +8,7 @@ set ai si cin ci sts=2 sw=2 ts=2 et nu nobk noswf
 set background=dark
 let g:solarized_termtrans=1
 "let g:solarized_termcolors=256
-colorscheme solarized
+"colorscheme solarized
 set t_Co=256
 set completeopt=preview,menu
 set matchtime=0
