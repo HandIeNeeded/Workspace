@@ -144,3 +144,23 @@ fi
 
 export INDEED_OFFICE=nrtoff
 export INDEED_TEAMS=acme
+
+export PATH=$PATH:$INDEED_PROJECT_DIR/ops-scripts/scripts/lucy
+export PATH=$PATH:/home/yuanlei/env/bin
+export PATH=$INDEED_PROJECT_DIR/hobo/bin:$PATH
+
+
+#auto update repos
+repos_to_update="~/env:${INDEED_PROJECT_DIR}/javadev:~/indeed/hobo"
+OLDIFS=$IFS
+IFS=":"
+for repo in $repos_to_update; do
+  if [[ -d ${repo} ]]; then
+    ~/env/bin/repo-current-async-check "${repo}"
+  fi
+done
+IFS=$OLDIFS
+
+#add some scripts to PATH
+export PATH=$PATH:/home/yuanlei/indeed/misc_scripts
+
