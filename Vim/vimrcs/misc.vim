@@ -27,5 +27,5 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strf
 
 autocmd BufNewFile *.cc,*.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.hs exec ":call SetTitle()" 
 autocmd BufNewFile * normal G
-hi CursorLine cterm=NONE ctermbg=234 ctermfg=NONE
-hi CursorColumn cterm=NONE ctermbg=234 ctermfg=NONE
+hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE
+hi CursorColumn cterm=NONE ctermbg=240 ctermfg=NONE

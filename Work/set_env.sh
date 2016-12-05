@@ -48,7 +48,7 @@ source ~/.zshrc
 
 cd ~
 touch .vimrc
-echo "source ~/Workspace/Vim/rc.vim" >> .vimrc
+echo "source ~/Workspace/Vim/rc.vim" > .vimrc
 
 echo "Basic environment is ready. Install YCM by Vundle if you want!!!"
 echo "Done!!! Enjoy :)"
