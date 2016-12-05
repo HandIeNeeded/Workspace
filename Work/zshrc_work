@@ -101,6 +101,7 @@ alias cd5="cd ../../../../.."
 alias gitg="gitg &"
 alias desk="nautilus . &"
 alias sw="shotwell"
+alias sl="ls"
 
 function msh() {
     user=$1
