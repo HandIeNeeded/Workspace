@@ -8,12 +8,12 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-"yoshioka
-Plugin 'Valloric/YouCompleteMe'
+"Yuan Lei
 Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end() 
 
