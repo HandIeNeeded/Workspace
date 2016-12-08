@@ -164,4 +164,5 @@ IFS=$OLDIFS
 
 #add some scripts to PATH
 export PATH=$PATH:/home/yuanlei/indeed/misc_scripts
+alias data="cd /media/yuanlei/storage/data/"
 
