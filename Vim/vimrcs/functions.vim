@@ -95,7 +95,7 @@ endfunc
 
 func! Rungdb()
   exec "w"
-  exec "!g++ -std=c++14 -g -Wall -DHOME % -o %<"
+  exec "!clang++ -std=c++14 -Wall -DHOME % -o %<"
   exec "!gdb ./%<"
 endfunc
 

@@ -16,7 +16,7 @@ set shm=atI
 set ff=unix
 set wildmenu
 set shortmess+=atI   
-set guifont=Monaco\ 10   
+set guifont=Monaco\ 10
 set report=0
 set scrolloff=5
 set history=1000
@@ -34,3 +34,5 @@ if has("autocmd")
 endif
 hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE
 hi CursorColumn cterm=NONE ctermbg=240 ctermfg=NONE
+set noeb
+set novb
