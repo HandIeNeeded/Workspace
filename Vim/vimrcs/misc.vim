@@ -21,6 +21,9 @@ set report=0
 set scrolloff=5
 set history=1000
 set cmdheight=1
+set noeb
+set novb
+set wig+=*.DS_Store
 set viminfo+=!
 set iskeyword+=_,$,@,%,#,-
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}   
@@ -29,5 +32,3 @@ autocmd BufNewFile *.cc,*.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.hs exec ":call SetT
 autocmd BufNewFile * normal G
 hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE
 hi CursorColumn cterm=NONE ctermbg=240 ctermfg=NONE
-set noeb
-set novb
