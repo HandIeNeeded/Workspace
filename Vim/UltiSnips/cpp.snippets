@@ -191,8 +191,6 @@ endsnippet
 snippet nb "without bits header" b
 #include <vector>
 #include <cstdio>
-#include <cstring>
-#include <cstdlib>
 #include <bitset>
 #include <utility>
 #include <cstdlib>
@@ -829,7 +827,7 @@ constexpr int ${2:N} = ${1:1e5 + 5};
 endsnippet
 
 snippet nn "constexpr n" w 
-constexpr int N = ${1:1e5 + 5};
+constexpr int ${2:N} = ${1:1e5 + 5};
 endsnippet
 
 snippet d4 "dx dy" w 
