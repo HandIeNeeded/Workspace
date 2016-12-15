@@ -51,18 +51,20 @@ ZSH_THEME="ylei"
 
 export PS1="\u@\h "
 export PATH="/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export PATH="/Users/$USER/Scalpel:$PATH"
+export PATH="/home/$USER/Scalpel:$PATH"
 export PATH="/opt/local/bin:$PATH"
-#export PATH="/Users/$USER/Software/JDK/jdk1.8.0_92:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
-#JAVA_HOME=/usr/local/jdk
-#JAVA_BIN=/usr/local/jdk/bin
-#PATH=$JAVA_HOME/bin:$PATH
-#CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-#export JAVA_HOME JAVA_BIN PATH CLASSPATH
+JAVA_HOME=/usr/local/jdk
+JAVA_BIN=/usr/local/jdk/bin
+PATH=$JAVA_HOME/bin:$PATH
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME JAVA_BIN PATH CLASSPATH
 export TERM=xterm-256color
+HOSTNAME=$(cat /etc/hostname)
+HOST=$(cat /etc/hostname)
 source $ZSH/oh-my-zsh.sh
+source ~/Public/vps.info
 
 #start with tmux
 if command -v tmux>/dev/null; then
@@ -112,16 +114,18 @@ function code() {
   if [ $# = 0 ]; then 
     cd ~/Retired/Codeforces/
     return 0
-  elif [ $# != 1 ]; then 
+  elif [ $# -gt 2 ]; then 
     echo "The number of parameters is not right!"
     return 0
-  fi 
-  cd ~; java -jar ~/Contest/TopCoder/Hightail/Hightail-v0.9.4.jar &
+  elif [ $# -eq 2 ]; then 
+    cd ~; java -jar ~/Contest/TopCoder/Hightail/Hightail-v0.9.5.jar &
+  fi
   mkcd ~/Retired/Codeforces/CF$1
 }
 
 function tc() {
-  cd ~/Contest/TopCoder
+  cd ~/Retired/TopCoder/SRM;
+  javaws /home/yuzhou627/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &
 }
 
 function check() {
