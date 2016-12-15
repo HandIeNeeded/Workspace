@@ -170,8 +170,6 @@ endsnippet
 snippet nb "without bits header" b
 #include <vector>
 #include <cstdio>
-#include <cstring>
-#include <cstdlib>
 #include <bitset>
 #include <utility>
 #include <cstdlib>
@@ -792,11 +790,11 @@ std::cerr << "[Line #" << __LINE__ << "] fuck !!!" << std::endl;
 endsnippet
 
 snippet mo "module" w
-constexpr int MO = ${1:1e9 + 7};
+constexpr int ${2:MO} = ${1:1e9 + 7};
 endsnippet
 
 snippet nn "constexpr n" w 
-constexpr int N = ${1:1e5 + 5};
+constexpr int ${2:N} = ${1:1e5 + 5};
 endsnippet
 
 snippet d4 "dx dy" w 
