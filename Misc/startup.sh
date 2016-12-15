@@ -12,6 +12,8 @@ if [[ $# > 0 ]]; then
   bash ~/Eclipse/eclipse_mars/eclimd &
 fi
 
+ibus-daemon -rd
+echo Last login at: $(date) > ~/login.history
 
 #Volume
 #pactl -- set-sink-volume 0 200%
