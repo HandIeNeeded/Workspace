@@ -117,15 +117,13 @@ function code() {
   elif [ $# -gt 2 ]; then 
     echo "The number of parameters is not right!"
     return 0
-  elif [ $# -eq 2 ]; then 
-    cd ~; java -jar ~/Contest/TopCoder/Hightail/Hightail-v0.9.5.jar &
-  fi
+  fi 
   mkcd ~/Retired/Codeforces/CF$1
 }
 
 function tc() {
-  cd ~/Retired/TopCoder/SRM;
-  javaws /home/yuzhou627/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &
+  cd ~/Retired/TopCoder/SRM
+  javaws ~/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &
 }
 
 function check() {
@@ -140,13 +138,8 @@ function run() {
   bash run.sh
 }
 
-function setk() {
-  bash ~/Workspace/Misc/startup.sh
-}
-
 alias vpn="sudo service openvpn restart"
 alias stop="sudo service openvpn stop"
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias web='python -m SimpleHTTPServer'
 alias sl='ls'
 alias cd1="cd .."
