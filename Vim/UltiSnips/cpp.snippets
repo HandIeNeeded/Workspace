@@ -426,8 +426,8 @@ endsnippet
 
 
 snippet powd "power module" w
-${1:int} Powd(${1:int} x, ${1:int} y) {
-  ${1:int} ans = 1;
+${1:int} Powd($1 x, $1 y) {
+  $1 ans = 1;
   for (; y; y >>= 1) {
     if (y & 1) ans = 1LL * ans * x % MO;
     x = 1LL * x * x % MO;
@@ -779,5 +779,9 @@ void out(T x) {
   putchar('\n');
 }
 
+endsnippet
+
+snippet dd "print fuck" w 
+std::cerr << "[Line #" << __LINE__ << "] fuck !!!" << std::endl;
 endsnippet
 
