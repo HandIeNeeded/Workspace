@@ -164,6 +164,6 @@ IFS=$OLDIFS
 
 #add some scripts to PATH
 export PATH=$PATH:/home/yuanlei/indeed/misc_scripts
-alias data="cd /media/yuanlei/storage/data/"
+alias data="cd /media/yuanlei/data/"
 alias tc="cd ~/Retired/TopCoder/SRM; javaws /home/yuanlei/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &"
 

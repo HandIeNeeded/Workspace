@@ -4,7 +4,7 @@ set cuc cul
 set hlsearch incsearch
 set autoread autowrite
 set backspace=indent,eol,start
-set ai si cin ci sts=2 sw=2 ts=2 et nu nobk noswf
+set ai si cin ci sts=4 sw=4 ts=4 et nu nobk noswf
 set background=dark
 let g:solarized_termtrans=1
 "let g:solarized_termcolors=256
