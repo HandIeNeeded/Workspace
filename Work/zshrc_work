@@ -164,6 +164,7 @@ IFS=$OLDIFS
 
 #add some scripts to PATH
 export PATH=$PATH:/home/yuanlei/indeed/misc_scripts
+export GITLAB_TOKEN=2iC6dvo4CcDsC9QmDr5k
 alias data="cd /media/yuanlei/data/"
 alias tc="cd ~/Retired/TopCoder/SRM; javaws /home/yuanlei/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &"
 
