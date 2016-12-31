@@ -175,6 +175,8 @@ snippet nb "without bits header" b
 #include <cstdlib>
 #include <sstream>
 #include <fstream>
+#include <cstring>
+#include <cassert>
 #include <set>
 #include <map>
 #include <deque>
@@ -789,3 +791,17 @@ snippet mo "module" w
 constexpr int MO = ${1:1e9 + 7};
 endsnippet
 
+snippet d4 "dx dy" w 
+int dx[] = {0, 0, 1, -1};
+int dy[] = {1, -1, 0, 0};
+endsnippet
+
+snippet d8 "dx dy" w
+int dx[] = {0, 1, 1, 1, 0, -1, -1, -1};
+int dy[] = {-1, -1, 0, 1, 1, 1, 0, -1};
+endsnippet
+
+
+snippet mo "MO" w 
+constexpr int MO = ${1:1e9 + 7};
+endsnippet
