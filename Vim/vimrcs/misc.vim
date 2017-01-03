@@ -25,7 +25,6 @@ set noeb
 set novb
 set wig+=*.DS_Store
 set viminfo+=!
-set clipboard=unnamed
 set iskeyword+=_,$,@,%,#,-
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}   
 
