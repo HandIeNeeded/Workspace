@@ -133,11 +133,11 @@ __builtin_popcount($1)$2
 endsnippet
 
 snippet lb "lower_bound" w 
-std::lower_bound($1.begin(), $1.end(), $2)
+std::lower_bound(${1:numbers}.begin(), $1.end(), $2)
 endsnippet
 
 snippet ub "upper_bound" w 
-std::upper_bound($1.begin(), $1.end(), $2)
+std::upper_bound(${1:numbers}.begin(), $1.end(), $2)
 endsnippet
 
 #code template
@@ -189,6 +189,7 @@ snippet nb "without bits header" b
 #include <iostream>
 #include <algorithm>
 #include <functional>
+#include <iomanip>
 
 int main() {
   std::ios::sync_with_stdio(0);
@@ -567,7 +568,7 @@ struct PT{
 endsnippet
 
 snippet setp "cout setprecision" w 
-std::cout << fixed << std::setprecision(${1:10}) << ${2:ans} << std::endl;
+std::cout << std::fixed << std::setprecision(${1:10}) << ${2:ans} << std::endl;
 endsnippet
 
 snippet edge "read edges" w 
@@ -790,6 +791,10 @@ endsnippet
 
 snippet mo "module" w
 constexpr int MO = ${1:1e9 + 7};
+endsnippet
+
+snippet nn "constexpr n" w 
+constexpr int N = ${1:1e5 + 5};
 endsnippet
 
 snippet d4 "dx dy" w 
