@@ -102,6 +102,7 @@ alias gitg="gitg &"
 alias desk="nautilus . &"
 alias sw="shotwell"
 alias sl="ls"
+alias tc="cd ~/Retired/TopCoder/SRM; javaws /home/yuanlei/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &"
 
 function msh() {
     user=$1
@@ -136,6 +137,7 @@ function go() {
     cd /$HOST/$user/$dir/
 }
 
+
 # indeed magic
 
 # Single-brace syntax because this is required in bash and sh alike
@@ -166,5 +168,5 @@ IFS=$OLDIFS
 export PATH=$PATH:/home/yuanlei/indeed/misc_scripts
 export GITLAB_TOKEN=2iC6dvo4CcDsC9QmDr5k
 alias data="cd /media/yuanlei/data/"
-alias tc="cd ~/Retired/TopCoder/SRM; javaws /home/yuanlei/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &"
+alias fix="ibus-daemon -rd"
 
