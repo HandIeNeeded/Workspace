@@ -51,15 +51,15 @@ ZSH_THEME="ylei"
 
 export PS1="\u@\h "
 export PATH="/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-export PATH="/home/$USER/Scalpel:$PATH"
+export PATH="/Users/$USER/Scalpel:$PATH"
+export PATH="/Users/$USER/Softwares/apache-ant-1.10.0/bin:$PATH"
 export PATH="/opt/local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
-JAVA_HOME=/usr/local/jdk
-JAVA_BIN=/usr/local/jdk/bin
-PATH=$JAVA_HOME/bin:$PATH
-CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-export JAVA_HOME JAVA_BIN PATH CLASSPATH
+JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home"
+JAVA_BIN="$JAVA_HOME/bin"
+ANT_HOME="/Users/$USER/Softwares/apache-ant-1.10.0"
+export JAVA_HOME JAVA_BIN ANT_HOME
 export TERM=xterm-256color
 HOSTNAME=$(cat /etc/hostname)
 HOST=$(cat /etc/hostname)
