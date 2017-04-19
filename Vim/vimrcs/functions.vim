@@ -37,7 +37,8 @@ endfunc
 func! CompileHome()
   exec "w"
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
-    exec "!g++ -std=c++14 -g -Wall -DHOME % -o %<"
+    exec '!echo "************************Compiling************************" && echo "[Parameters]: g++ -std=c++14 -g -O2 -Wall -DHOME % -o %<" && g++ -std=c++14 -g -O2 -Wall -DHOME % -o %<'
+    call Run()
   elseif &filetype == 'java' 
     exec "!javac %" 
   elseif &filetype == 'sh'
@@ -56,7 +57,7 @@ endfunc
 
 func! Run()
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
-    exec "!./%<"
+    exec '!echo "*************************Running*************************" && ./%<'
   elseif &filetype == 'java' 
     exec "!java %<" 
   elseif &filetype == 'sh'
@@ -76,7 +77,9 @@ endfunc
 func! Compile()
   exec "w"
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
-    exec "!g++ -std=c++14 -g -Wall % -o %<"
+  if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
+    exec '!echo "************************Compiling************************" && echo "[Parameters]: g++ -std=c++14 -g -O2 -Wall % -o %<" && g++ -std=c++14 -g -O2 -Wall % -o %<'
+    call Run()
   elseif &filetype == 'java' 
     exec "!javac %" 
   elseif &filetype == 'sh'
