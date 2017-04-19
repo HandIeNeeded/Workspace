@@ -166,7 +166,15 @@ IFS=$OLDIFS
 
 #add some scripts to PATH
 export PATH=$PATH:/home/yuanlei/indeed/misc_scripts
+export PATH=$PATH:/home/yuanlei/indeed/javadev/bin
 export GITLAB_TOKEN=2iC6dvo4CcDsC9QmDr5k
 alias data="cd /media/yuanlei/data/"
 alias fix="ibus-daemon -rd"
+alias antp="ant autogenerate-protos"
+alias antc="ant clean distribute"
+alias antd="ant distribute"
+alias antt="ant test"
 
+
+export NVM_DIR="/home/yuanlei/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
