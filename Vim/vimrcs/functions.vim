@@ -77,7 +77,8 @@ endfunc
 func! Compile()
   exec "w"
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
-    exec '!echo "************************Compiling************************" && echo "[Parameters]: g++ -std=c++14 -g -O2 -Wall % -o %<" && g++ -std=c++14 -g -O2 -Wall % -o %< &'
+  if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
+    exec '!echo "************************Compiling************************" && echo "[Parameters]: g++ -std=c++14 -g -O2 -Wall % -o %<" && g++ -std=c++14 -g -O2 -Wall % -o %<'
     call Run()
   elseif &filetype == 'java' 
     exec "!javac %" 
