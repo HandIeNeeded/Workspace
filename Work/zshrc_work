@@ -146,7 +146,7 @@ if [ -e "$HOME/env/etc/indeedrc" ]; then
 fi
 
 export INDEED_OFFICE=nrtoff
-export INDEED_TEAMS=acme
+export INDEED_TEAMS="money_tokyo"
 
 export PATH=$PATH:$INDEED_PROJECT_DIR/ops-scripts/scripts/lucy
 export PATH=$PATH:/home/yuanlei/env/bin
