@@ -1,5 +1,5 @@
 syntax enable
-set nocompatible  
+set nocompatible
 set cuc cul
 set hlsearch incsearch
 set autoread autowrite
@@ -26,6 +26,11 @@ set iskeyword+=_,$,@,%,#,-
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%m/%d/%y\ -\ %H:%M\")}   
 
 autocmd BufNewFile *.cc,*.cpp,*.[ch],*.sh,*.rb,*.java,*.py,*.hs exec ":call SetTitle()" 
-autocmd BufNewFile * normal G
+autocmd BufNewFile * exec ":normal G"
+
+"cursor go back to the last edited position of the previous session
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 hi CursorLine cterm=NONE ctermbg=236 ctermfg=NONE
 hi CursorColumn cterm=NONE ctermbg=240 ctermfg=NONE

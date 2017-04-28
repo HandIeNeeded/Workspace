@@ -37,7 +37,7 @@ endfunc
 func! CompileHome()
   exec "w"
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
-    exec "!g++ -std=c++14 -g -Wall -DHOME % -o %<"
+    exec "!g++ -std=c++14 -O2 -Wall -DHOME % -o %<"
   elseif &filetype == 'java' 
     exec "!javac %" 
   elseif &filetype == 'sh'
@@ -76,7 +76,7 @@ endfunc
 func! Compile()
   exec "w"
   if &filetype == 'c' || &filetype == 'cc' || &filetype == 'cpp'
-    exec "!g++ -std=c++14 -g -Wall % -o %<"
+    exec "!g++ -std=c++14 -O2 -Wall % -o %<"
   elseif &filetype == 'java' 
     exec "!javac %" 
   elseif &filetype == 'sh'
