@@ -42,7 +42,7 @@ if (FILE *fp = fopen(${1:"filename"}, "r")) {
 endsnippet
 
 snippet map "std::map (map)"
-std::map<${1:key}, ${2:value}> map$0;
+std::map<${1:int}, ${2:int}> ${0:cnt};
 endsnippet
 
 snippet vec "std::vector (v)" w
@@ -750,7 +750,15 @@ printf("Case #%d:", ++cas);
 endsnippet
 
 snippet ca "print case" w 
-std::cout << "Case #" << ++cas << ":";
+std::cout << "Case #" << cas << ":";
+endsnippet
+
+snippet in "read a number" w 
+std::cin >> $1
+endsnippet
+
+snippet endl "cout endl" w 
+std::cout << std::endl;
 endsnippet
 
 snippet ll "using LL" w 
@@ -790,11 +798,11 @@ std::cerr << "[Line #" << __LINE__ << "] fuck !!!" << std::endl;
 endsnippet
 
 snippet mo "module" w
-constexpr int MO = ${1:1e9 + 7};
+constexpr int ${2:MO} = ${1:1e9 + 7};
 endsnippet
 
 snippet nn "constexpr n" w 
-constexpr int N = ${1:1e5 + 5};
+constexpr int ${2:N} = ${1:1e5 + 5};
 endsnippet
 
 snippet d4 "dx dy" w 
