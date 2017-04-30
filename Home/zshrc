@@ -124,8 +124,8 @@ function code() {
 }
 
 function tc() {
-  cd ~/Retired/TopCoder/SRM;
-  javaws /home/yuzhou627/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &
+  cd ~/Retired/TopCoder/SRM_LATEST
+  javaws ~/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &
 }
 
 function check() {
