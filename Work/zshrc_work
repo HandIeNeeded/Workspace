@@ -60,8 +60,8 @@ PATH=$JAVA_HOME/bin:$PATH
 CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export JAVA_HOME JAVA_BIN PATH CLASSPATH
 export TERM=xterm-256color
-HOSTNAME=$(cat /etc/hostname)
-HOST=$(cat /etc/hostname)
+HOSTNAME=$(hostname)
+HOST=$(hostname)
 source $ZSH/oh-my-zsh.sh
 
 #start with tmux
@@ -137,36 +137,4 @@ function go() {
     cd /$HOST/$user/$dir/
 }
 
-
-# indeed magic
-
-# Single-brace syntax because this is required in bash and sh alike
-if [ -e "$HOME/env/etc/indeedrc" ]; then
-    . "$HOME/env/etc/indeedrc"
-fi
-
-export INDEED_OFFICE=nrtoff
-export INDEED_TEAMS="money_tokyo"
-
-export PATH=$PATH:$INDEED_PROJECT_DIR/ops-scripts/scripts/lucy
-export PATH=$PATH:/home/yuanlei/env/bin
-export PATH=$INDEED_PROJECT_DIR/hobo/bin:$PATH
-
-
-#auto update repos
-repos_to_update="~/env:${INDEED_PROJECT_DIR}/javadev:~/indeed/hobo"
-OLDIFS=$IFS
-IFS=":"
-for repo in $repos_to_update; do
-  if [[ -d ${repo} ]]; then
-    ~/env/bin/repo-current-async-check "${repo}"
-  fi
-done
-IFS=$OLDIFS
-
-#add some scripts to PATH
-export PATH=$PATH:/home/yuanlei/indeed/misc_scripts
-export GITLAB_TOKEN=2iC6dvo4CcDsC9QmDr5k
-alias data="cd /media/yuanlei/data/"
-alias fix="ibus-daemon -rd"
 

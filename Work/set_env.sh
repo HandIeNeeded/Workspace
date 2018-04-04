@@ -8,7 +8,7 @@ if [ -d "~/Workspace" ]; then
     echo "Cool, Workspace is already there!!!"
 else 
     echo "No Workspace found, clone it from github!!!"
-    git clone https://github.com/yuzhou627/Workspace.git 
+    git clone https://github.com/HandIeNeeded/Workspace.git
 fi
 
 echo "Now update git repo first!!!"
@@ -26,7 +26,7 @@ else
 fi
 
 echo "Now Install Vundle !!!"
-if [ -d "~/.oh-my-zsh" ]; then
+if [ -d "~/.vim/bundle" ]; then
     echo "Cool, Vundle is already there!!!"
 else
     echo "No Vundle found, clone it from github!!!"

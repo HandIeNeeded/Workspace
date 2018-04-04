@@ -8,4 +8,4 @@ git config --global user.name "Yuan Lei"
 git config --global user.email "yuanlei@indeed.com"
 git config --global core.editor vim
 
-sudo apt-get install gitg
+#sudo apt-get install gitg
