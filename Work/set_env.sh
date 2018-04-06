@@ -35,11 +35,15 @@ fi
 
 echo "Now set up environment!!!"
 cd ~/Workspace/Work
+mv ~/.bashrc ~/.bashrc.bak
 cp bashrc_work ~/.bashrc
 cp zshrc_work ~/.zshrc
+mv ~/.zshrc ~/.zshrc.bak
 cp ylei.zsh-theme_work ~/.oh-my-zsh/themes/ylei.zsh-theme
+mv ~/.vimrc ~/.vimrc.bak
 cp vimrc_work ~/.vimrc
 cp ycm_extra_conf.py ~/
+mv ~/.tmux.conf ~/.tmux.conf
 cp ../Misc/tmux ~/.tmux.conf
 cp -r ~/Workspace/Misc/Scalpel ~/
 
