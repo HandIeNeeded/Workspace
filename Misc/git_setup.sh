@@ -5,7 +5,7 @@ git config --global alias.co "checkout -b"
 git config --global alias.bh "branch"
 
 git config --global user.name "Yuan Lei"
-git config --global user.email "yuanlei@indeed.com"
+git config --global user.email "yuanlei@fb.com"
 git config --global core.editor vim
 
 #sudo apt-get install gitg

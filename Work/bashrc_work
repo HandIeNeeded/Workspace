@@ -151,13 +151,3 @@ function go() {
     cd /$HOST/$user/$dir/
 }
 
-# indeed magic
-
-# Single-brace syntax because this is required in bash and sh alike
-if [ -e "$HOME/env/etc/indeedrc" ]; then
-    . "$HOME/env/etc/indeedrc"
-fi
-
-export INDEED_OFFICE=nrtoff
-export INDEED_TEAMS=acme
-
