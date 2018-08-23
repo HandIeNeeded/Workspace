@@ -49,7 +49,6 @@ ZSH_THEME="ylei"
 
 # User configuration
 
-export PS1="\u@\h "
 export PATH="/usr/local/lib:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PATH="/home/$USER/Scalpel:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
@@ -101,25 +100,6 @@ alias desk="nautilus . &"
 alias sw="shotwell"
 alias sl="ls"
 alias tc="cd ~/Retired/TopCoder/SRM; javaws /home/yuanlei/Retired/TopCoder/Plugins/ContestAppletProd.jnlp &"
-
-function msh() {
-    user=$1
-    ip=$2
-    if [ $# != 2 ]; then
-        echo "Use default user ylei!!!"
-        user="ylei"
-        ip=$1
-    fi
-    if (( $ip > 50 )) && (( $ip < 80 )); then
-        ssh $user@192.168.2.$ip -Y
-    elif (( $ip > 100 )) && (( $ip < 130 )); then
-        ssh $user@192.168.2.$ip -Y
-    elif (( $ip > 200 )) && (( $ip < 210 )); then
-        ssh $user@192.168.2.$ip -Y
-    else
-        ssh $user@192.168.0.$ip -Y
-    fi
-}
 
 function setk() {
   bash ~/Workspace/Misc/startup.sh 

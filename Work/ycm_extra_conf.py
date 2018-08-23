@@ -50,8 +50,6 @@ flags = [
 '-I/usr/local/include/',
 
 '-I/usr/include/c++/4.9',
-'-I/ficus193/ylei/ficus/',
-'-I/ficus193/ylei/ficus/external/',
 '-I/usr/include/boost',
 
 '-Wall',
